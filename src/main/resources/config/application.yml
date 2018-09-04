@@ -1,0 +1,24 @@
+server:
+    port: 9090
+
+spring:
+    datasource:
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/cinq_sample?rewriteBatchedStatements=true
+        username: root
+        password: root
+        max-wait: 1000
+        max-idle: 50
+        max-active: 50
+        tomcat:
+            test-on-borrow: true
+            validation-query: SELECT COUNT(*) FROM country
+            
+    jersey:
+        type: filter
+    jpa:
+        show_sql: true
+        generate-ddl: false
+        hibernate:
+            ddl-auto: validate
+            naming-strategy: org.hibernate.cfg.EJB3NamingStrategy
