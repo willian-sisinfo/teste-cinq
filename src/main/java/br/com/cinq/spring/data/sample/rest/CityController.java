@@ -27,6 +27,9 @@ public class CityController {
     @GET
     @Produces("application/json")
     public List<City> cities(@QueryParam("country") String country){
+        if(country == null) {
+            return this.repository.findAll();
+        }
         return this.repository.findByCountry_NameIgnoreCaseContaining(country);
     }
 
